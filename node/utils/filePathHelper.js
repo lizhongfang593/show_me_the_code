@@ -7,6 +7,9 @@ function pathIsDirectory (path) {
 }
 
 // 递归获取文件夹下的所有文件列表
+// localFilePathDir: 目标文件夹
+// fileFilter: 文件过滤方法
+// dirFilter: 文件夹过滤方法
 export function GetDirNestedFileList (localFilePathDir, fileFilter, dirFilter) {
     return new Promise((resolve, reject) => {
         fs.readdir(localFilePathDir, function (err, data) {
@@ -14,8 +17,8 @@ export function GetDirNestedFileList (localFilePathDir, fileFilter, dirFilter) {
                 reject(err)
             }
             data = data || [];
-            data = data.filter(filePath => ( 
-                filePath.indexOf('__MACOSX') == -1 && 
+            data = data.filter(filePath => (
+                filePath.indexOf('__MACOSX') == -1 &&
                 !filePath.startsWith('.')
             ));
 
@@ -30,7 +33,7 @@ export function GetDirNestedFileList (localFilePathDir, fileFilter, dirFilter) {
                     subDirFilesPromise.push(GetDirNestedFileList(filePath, fileFilter, dirFilter).then(result => (fileList = fileList.concat(result || []))));
                 } else {
                     // if (filePath.endsWith('.html')) {
-                        
+
                     // }
 
                     var checked = ( !(fileFilter && typeof fileFilter == 'function' && (fileFilter(filePath) === false)) )
