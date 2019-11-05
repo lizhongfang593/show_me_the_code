@@ -57,7 +57,7 @@ const ExportFromExcelWithXLSX = function (filePath) {
 
     return Promise.resolve(result); //通过工具将表对象的数据读出来并转成json
 
-    
+
 }
 
 
