@@ -40,8 +40,8 @@ function AComponent () {
     this.a = 'aaaa';
     DL.set('a', this.a);
 
-    this.changeAFunc = function () {
-        this.a = 'bbbb';
+    this.changeAFunc = function (newA) {
+        this.a = newA || 'bbbb';
         DL.set('a', this.a);
     }.bind(this);
     return this;
