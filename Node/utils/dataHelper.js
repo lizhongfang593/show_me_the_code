@@ -58,3 +58,11 @@ export const RightJoinArr = function (leftArr, rightArr, objKey) {
 
     return { result: crossResult.cross.concat(crossResult.right), rest: crossResult.left };
 }
+
+export const Base64Encode = function (str) {
+    return Buffer.from(str).toString('base64');
+}
+
+export const Base64Decode = function (str) {
+    return Buffer.from(str, 'base64').toString('ascii');
+}
