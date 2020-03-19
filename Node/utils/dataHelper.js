@@ -64,5 +64,5 @@ export const Base64Encode = function (str) {
 }
 
 export const Base64Decode = function (str) {
-    return Buffer.from(str, 'base64').toString('ascii');
+    return Buffer.from(str, 'base64').toString('utf8');
 }
